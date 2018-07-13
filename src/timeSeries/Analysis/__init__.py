@@ -5,22 +5,19 @@
 @project    TimeSeries
 --------------------------------------
 @author     hjw
-@date       2018-04-25 14:13
-@version    0.0.1.20180425
+@date       2018-07-11 13:27
+@version    0.0.1.20180711
 --------------------------------------
 <enter description here>
 """
 
 import sys
-from .timeSeries import *
-from .Analysis import *
+from .Permutation_entropy import *
 import logging
 
 logging.basicConfig(filename='./logs/datageek.log',
                     format='%(asctime)s\t%(filename)s[%(lineno)d]\t%(levelname)s\t%(message)s',
                     datefmt='[%Y-%m-%d %H:%M:%S]',
                     level=logging.DEBUG)
-
-
 
 

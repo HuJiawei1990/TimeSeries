@@ -1,23 +1,21 @@
 # C:\lib\Python\Python36 python.exe
 # -*- coding:utf-8 -*-
 """
-@file       Analysis.py
+@file       ApEn.py
 @project    TimeSeries
 --------------------------------------
 @author     hjw
-@date       2018-04-25 17:01
-@version    0.0.1.20180425
+@date       2018-07-13 10:47
+@version    0.0.1.20180713
 --------------------------------------
 <enter description here>
 """
 
 import sys
-from .timeSeries import timeSeries
 
 
-
-
-
-
-if __name__ == "__main__":
-    pi = [0.1]
+class ApEn(object):
+    def __init__(self):
+        pass
+        
+    

@@ -1,23 +1,22 @@
 # C:\lib\Python\Python36 python.exe
 # -*- coding:utf-8 -*-
 """
-@file       Analysis.py
+@file       __init__.py.py
 @project    TimeSeries
 --------------------------------------
 @author     hjw
-@date       2018-04-25 17:01
-@version    0.0.1.20180425
+@date       2018-07-11 13:27
+@version    0.0.1.20180711
 --------------------------------------
 <enter description here>
 """
 
 import sys
-from .timeSeries import timeSeries
 
 
-
-
+def run():
+    pass
 
 
 if __name__ == "__main__":
-    pi = [0.1]
+    run()
