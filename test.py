@@ -13,7 +13,7 @@
 
 import sys
 from src.timeSeries.timeSeries import timeSeriesWindow, timeSeries
-from src.timeSeries.Analysis import Permutation_entropy
+from src.timeSeries.Analysis import Entropy
 import pandas as pd
 import numpy as np
 
@@ -30,33 +30,34 @@ def run_test():
             else:
                 ts, value = line.strip('\n\r').split(seprator)[0:2]
                 cpu_data[int(ts)] = float(value)
-                
+            
             if idx > 1000: break
-    
+        
         print("Load %d lines of data.. " % len(cpu_data))
     
+    '''
     cpu_time_series = timeSeries(cpu_data)
     ## 时间序列的间隔为 60 seconds
     cpu_time_series.set_step(60)
     
     cpu_matrix = cpu_time_series.generate_feature_matrix()
     
-    
-    
-    
     pass
+    '''
+    
+    samp_en = Entropy.get_entropy(list(cpu_data.values()), en_type='sample', min_dist=3)
+    ap_en = Entropy.get_entropy(list(cpu_data.values()), en_type='approximate', min_dist=3)
+    pe_en = Entropy.get_entropy(list(cpu_data.values()), en_type='permutation')
+    
+    print("samp_en = %.5f" % samp_en)
+    print("ap_en = %.5f" % ap_en)
+    print("pe_en = %.5f" % pe_en)
 
 
 if __name__ == "__main__":
-    #run_test()
-    l1 = [1,2,3,4,5,6,7,8,9,3,2,1,5,2,1]
-    r1 = Permutation_entropy(values=l1, n_cols=5)
+    run_test()
+    l1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1, 5, 2, 1]
+    l2 = np.array([85, 80, 89] * 17)
+    res = Entropy.get_entropy(l2, en_type='sample', min_dist=3)
     
-    r1.get_permutation_entropy()
-    
-    print(r1.permutations)
-    print(r1.permutation_unique)
-    print(r1.permutation_count)
-    print(r1.permutation_entropy)
-    
-    
+    print(res)

@@ -12,7 +12,7 @@
 """
 
 import sys
-from .Permutation_entropy import *
+from .Entropy import *
 import logging
 
 logging.basicConfig(filename='./logs/datageek.log',
