@@ -14,6 +14,7 @@
 import sys
 import numpy as np
 import logging
+from .Analysis import Entropy,get_entropy
 
 logger = logging.getLogger("timeSeries")
 
@@ -217,14 +218,14 @@ class timeSeriesWindow(timeSeries):
         features['diff_var'] = values_diff.var()
         features['diff_std'] = np.std(values_diff, ddof=0)
         
+        
         ## 计算时间窗口中的变化率
         diff_rate = np.array([(values[i + 1] - values[i]) / values[i] for i in range(self.size - 1)])
 
         for idx, value in enumerate(values_diff):
             features['diff_rate_' + str(idx)] = value
         
-        
-        
+        features['samp_entropy'] = get_entropy(self.values, en_type='sample')
         
         ## debug logs: print all features get.
         ## 日志打印: 所有特征信息

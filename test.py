@@ -13,7 +13,7 @@
 
 import sys
 from src.timeSeries.timeSeries import timeSeriesWindow, timeSeries
-from src.timeSeries.Analysis import Entropy
+from src.timeSeries.Analysis import Entropy, get_entropy
 import pandas as pd
 import numpy as np
 
@@ -45,9 +45,9 @@ def run_test():
     pass
     '''
     
-    samp_en = Entropy.get_entropy(list(cpu_data.values()), en_type='sample', min_dist=3)
-    ap_en = Entropy.get_entropy(list(cpu_data.values()), en_type='approximate', min_dist=3)
-    pe_en = Entropy.get_entropy(list(cpu_data.values()), en_type='permutation')
+    samp_en = get_entropy(list(cpu_data.values()), en_type='sample', n_cols=2, min_dist=3)
+    ap_en = get_entropy(list(cpu_data.values()), en_type='approximate', min_dist=3)
+    pe_en = get_entropy(list(cpu_data.values()), en_type='permutation')
     
     print("samp_en = %.5f" % samp_en)
     print("ap_en = %.5f" % ap_en)
@@ -56,8 +56,11 @@ def run_test():
 
 if __name__ == "__main__":
     run_test()
+    
+    '''
     l1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1, 5, 2, 1]
     l2 = np.array([85, 80, 89] * 17)
-    res = Entropy.get_entropy(l2, en_type='sample', min_dist=3)
+    res = get_entropy(l2, en_type='sample', min_dist=3)
     
     print(res)
+    '''
